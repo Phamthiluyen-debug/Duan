@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.11.2",
+    "antd": "^6.1.0"
+  }
+}
