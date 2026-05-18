@@ -49,13 +49,6 @@ const HomePage = () => {
     placeholderData: (prev) => prev,
   })
 
-  // 🔥 ADD: map type → tên hiển thị
-  const mapType = {
-    cafe: 'Sách giáo khoa',
-    'trà sữa': 'Tiểu thuyết',
-    'trà hoa quả': 'Truyện tranh'
-  }
-
   return (
     <Loading isLoading={isLoading}>
       
@@ -64,7 +57,7 @@ const HomePage = () => {
         <WrapperTypeProduct>
           {typeProducts?.map((item) => (
             <TypeProduct
-              name={mapType[item] || item}   // 👈 HIỂN THỊ
+              name={item} // 👈 HIỂN THỊ
               type={item}                    // 👈 GIỮ TYPE THẬT
               key={item}
             />

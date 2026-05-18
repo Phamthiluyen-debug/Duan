@@ -11,6 +11,7 @@ import ProfilePage from "../pages/Profile/ProfilePage";
 import OrderPage from "../pages/OrderPage/OrderPage";
 import MyOrderPage from '../pages/MyOrder/MyOrder';
 import StaffPage from '../pages/StaffPage/StaffPage';
+import PaymentPage from '../pages/PaymentPage/PaymentPage'
 
 export const routes = [
   {
@@ -77,5 +78,10 @@ export const routes = [
     path: '/staff',
     page: StaffPage,
     isShowHeader: true
+},
+{
+  path: '/payment',
+  page: PaymentPage,
+  isShowHeader: true,
 },
 ]

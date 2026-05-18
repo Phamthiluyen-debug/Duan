@@ -19,6 +19,7 @@ import * as UserService from '../../services/UserService'
 import { resetUser } from '../../redux/slices/userSlice'
 import Loading from '../LoadingComponent/Loading'
 import { searchProduct } from '../../redux/slices/productSlide'
+import * as TypeProductService from '../../services/TypeProductService'
 
 const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
   const navigate = useNavigate()
@@ -33,6 +34,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
   const [search, setSearch] = useState('')
   const [isOpenPopup, setIsOpenPopup] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [types, setTypes] = useState([])
 
   const handleNavigateLogin = () => {
     navigate('/sign-in')
@@ -96,7 +98,7 @@ const HeaderComponent = ({ isHiddenSearch = false, isHiddenCart = false }) => {
 )}
 {user?.role === 'staff' &&  (
   <WrapperContentPopup onClick={() => handleClickNavigate('staff')}>
-    Quản lí đơn hàng
+    Quản lý hệ thống
   </WrapperContentPopup>
 )}
 

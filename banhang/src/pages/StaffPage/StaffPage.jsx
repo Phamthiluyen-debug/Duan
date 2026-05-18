@@ -1,39 +1,108 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+
+import AdminProduct from '../../components/AdminProduct/AdminProduct'
+import AdminOrder from '../../components/AdminOrder/AdminOrder'
+import AdminType from '../../components/AdminType/AdminType'
+import AdminCustomer from '../../components/AdminCustomer/AdminCustomer'
 
 const StaffPage = () => {
 
   const user = useSelector((state) => state.user)
 
+  const [page, setPage] = useState('')
+
   return (
-    <div>
+    <div style={{ padding: '20px' }}>
 
-      {user?.permissions?.includes('manage_products') && (
-        <div>
-          <h2>Quản lý sách</h2>
-        </div>
-      )}
+      {/* MENU */}
+      <div
+        style={{
+          width: '250px',
+          background: '#fff',
+          padding: '20px',
+          marginBottom: '20px'
+        }}
+      >
 
-      {user?.permissions?.includes('manage_types') && (
-        <div>
-          <h2>Quản lý thể loại</h2>
-        </div>
-      )}
+        {user?.permissions?.includes('manage_products') && (
+          <div
+            style={{
+              marginBottom: '15px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+            onClick={() => setPage('products')}
+          >
+            Quản lý sản phẩm
+          </div>
+        )}
 
-      {user?.permissions?.includes('manage_orders') && (
-        <div>
-          <h2>Quản lý đơn hàng</h2>
-        </div>
-      )}
+        {user?.permissions?.includes('manage_types') && (
+          <div
+            style={{
+              marginBottom: '15px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+            onClick={() => setPage('types')}
+          >
+            Quản lý thể loại
+          </div>
+        )}
 
-      {user?.permissions?.includes('support_customer') && (
-        <div>
-          <h2>Hỗ trợ khách hàng</h2>
-        </div>
-      )}
+        {user?.permissions?.includes('manage_orders') && (
+          <div
+            style={{
+              marginBottom: '15px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+            onClick={() => setPage('orders')}
+          >
+            Quản lý đơn hàng
+          </div>
+        )}
+
+        {user?.permissions?.includes('support_customer') && (
+          <div
+            style={{
+              marginBottom: '15px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}
+            onClick={() => setPage('customers')}
+          >
+            Hỗ trợ khách hàng
+          </div>
+        )}
+
+      </div>
+
+      {/* CONTENT */}
+      <div>
+
+        {page === 'products' && (
+          <AdminProduct />
+        )}
+
+        {page === 'types' && (
+          <AdminType />
+        )}
+
+        {page === 'orders' && (
+          <AdminOrder />
+        )}
+
+        {page === 'customers' && (
+          <AdminCustomer />
+        )}
+
+      </div>
 
     </div>
   )
 }
 
 export default StaffPage
+console.log(StaffPage)
